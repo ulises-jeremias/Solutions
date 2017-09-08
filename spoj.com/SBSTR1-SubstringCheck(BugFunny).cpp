@@ -8,24 +8,24 @@
  #include <iostream>
  #include <string>
 
- using namespace std;
+using namespace std;
 
- static int max_cout = 2;
+static int max_cout = 2;
 
- int main(int argc, char const *argv[])
- {
-     string input, pattern, output;
-     int result, i;
+int main(int argc, char const *argv[])
+{
+        string input, pattern, output;
+        int result, i;
 
-     output = "";
+        output = "";
 
-     for (i = 0; i < max_cout; i++) {
-         cin >> input >> pattern;
-         result = (int) input.find(pattern) != -1;
-         output += (result ? "1\n" : "0\n");
-     }
+        for (i = 0; i < max_cout; i++) {
+                cin >> input >> pattern;
+                result = (int) input.find(pattern) != -1;
+                output += (result ? "1\n" : "0\n");
+        }
 
-     cout << output;
+        cout << output;
 
-     return 0;
- }
+        return 0;
+}

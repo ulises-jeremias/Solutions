@@ -9,29 +9,29 @@
  #include <map>
  #include <queue>
 
- using namespace std;
+using namespace std;
 
- int main(int argc, char const *argv[]) {
-     ios_base::sync_with_stdio(false);
-     cin.tie(NULL);
+int main(int argc, char const *argv[]) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
 
-     int n;
-     map<int, int> map;
-     queue<int> q;
+        int n;
+        map<int, int> map;
+        queue<int> q;
 
-     while (cin >> n) {
-         if (map.find(n) != map.end()) {
-             map[n]++;
-         } else {
-             map[n] = 1;
-             q.push(n);
-         }
-     }
+        while (cin >> n) {
+                if (map.find(n) != map.end()) {
+                        map[n]++;
+                } else {
+                        map[n] = 1;
+                        q.push(n);
+                }
+        }
 
-     while (q.size()) {
-         cout << q.front() << " " << map[q.front()] << endl;
-         q.pop();
-     }
+        while (q.size()) {
+                cout << q.front() << " " << map[q.front()] << endl;
+                q.pop();
+        }
 
-     return 0;
- }
+        return 0;
+}

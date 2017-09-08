@@ -8,40 +8,39 @@
  #include <iostream>
  #include <string>
 
- using namespace std;
+using namespace std;
 
- int main(int argc, char const *argv[]) {
-     ios_base::sync_with_stdio(false);
+int main(int argc, char const *argv[]) {
+        ios_base::sync_with_stdio(false);
 
+        int n, i, c, p, diff;
+        bool jolly;
+        string output;
 
-     int n, i, c, p, diff;
-     bool jolly;
-     string output;
+        while (cin >> n) {
+                jolly = true;
+                p = 3005;
+                diff = n - 1;
 
-     while (cin >> n) {
-         jolly = true;
-         p = 3005;
-         diff = n - 1;
+                for (i = 0; i < n; i++) {
+                        cin >> c;
 
-         for (i = 0; i < n; i++) {
-             cin >> c;
+                        if (p == 3005 or !jolly) {
+                                p = c;
+                                continue;
+                        }
 
-             if (p == 3005 or !jolly) {
-                 p = c;
-                 continue;
-             }
+                        if (abs(c - p) != diff) {
+                                jolly = false;
+                        }
 
-             if (abs(c - p) != diff) {
-                 jolly = false;
-             }
+                        p = c;
+                        diff--;
+                }
 
-             p = c;
-             diff--;
-         }
+                output = !jolly ? "Not Jolly" : "Jolly";
+                cout << output << endl;
+        }
 
-         output = !jolly ? "Not Jolly" : "Jolly";
-         cout << output << endl;
-     }
-
-     return 0;
- }
+        return 0;
+}

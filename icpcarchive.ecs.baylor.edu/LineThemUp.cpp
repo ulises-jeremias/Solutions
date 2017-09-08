@@ -8,59 +8,59 @@
  #include <iostream>
  #include <string>
 
- using namespace std;
+using namespace std;
 
- bool is_less(string a, string b)
- {
-     return a < b;
- }
+bool is_less(string a, string b)
+{
+        return a < b;
+}
 
- bool is_greater(string a, string b)
- {
-     return a > b;
- }
+bool is_greater(string a, string b)
+{
+        return a > b;
+}
 
- int main(int argc, char const *argv[]) {
-     ios_base::sync_with_stdio(0);
+int main(int argc, char const *argv[]) {
+        ios_base::sync_with_stdio(0);
 
-     int i, j, k;
-     bool(*block)(string, string);
-     bool ordered;
-     string name, previous, output = "";
+        int i, j, k;
+        bool (*block)(string, string);
+        bool ordered;
+        string name, previous, output = "";
 
-     while (cin >> k) {
-         output.clear();
-         previous.clear();
-         ordered = true;
-         block = NULL;
+        while (cin >> k) {
+                output.clear();
+                previous.clear();
+                ordered = true;
+                block = NULL;
 
-         for (j = 0; j < k; j++) {
-             cin >> name;
+                for (j = 0; j < k; j++) {
+                        cin >> name;
 
-             if (!ordered) {
-                 continue;
-             }
+                        if (!ordered) {
+                                continue;
+                        }
 
-             if (previous == "") {
-                 previous = name;
-                 continue;
-             }
+                        if (previous == "") {
+                                previous = name;
+                                continue;
+                        }
 
-             if (block == NULL) {
-                 block = name < previous ? &is_less : &is_greater;
-             }
+                        if (block == NULL) {
+                                block = name < previous ? &is_less : &is_greater;
+                        }
 
-             ordered = block(name, previous);
-         }
+                        ordered = block(name, previous);
+                }
 
-         if (!ordered) {
-             output += "NEITHER";
-         } else {
-             output += block == is_less ? "DECREASING" : "INCREASING";
-         }
+                if (!ordered) {
+                        output += "NEITHER";
+                } else {
+                        output += block == is_less ? "DECREASING" : "INCREASING";
+                }
 
-         cout << output << '\n';
-     }
+                cout << output << '\n';
+        }
 
-     return 0;
- }
+        return 0;
+}

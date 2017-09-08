@@ -13,27 +13,27 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
 
-    string a, b, input;
-    stringstream ss;
-    map<string, string> dic;
+        string a, b, input;
+        stringstream ss;
+        map<string, string> dic;
 
-    while (getline(cin, input), input.length()) {
-        ss.clear();
-        ss << input;
-        ss >> a >> b;
-        dic[b] = a;
-    }
-
-    while (cin >> b) {
-        if (dic.find(b) == dic.end()) {
-            cout << "eh" << endl;
-        } else {
-            cout << dic[b] << endl;
+        while (getline(cin, input), input.length()) {
+                ss.clear();
+                ss << input;
+                ss >> a >> b;
+                dic[b] = a;
         }
-    }
 
-    return 0;
+        while (cin >> b) {
+                if (dic.find(b) == dic.end()) {
+                        cout << "eh" << endl;
+                } else {
+                        cout << dic[b] << endl;
+                }
+        }
+
+        return 0;
 }
