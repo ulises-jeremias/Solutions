@@ -9,12 +9,12 @@
 
 using namespace std;
 
-bool incresing (string *s, int n) {
+bool increasing (string *s, int n) {
         for (int i = 1; i < n; i++) if (s[i-1] > s[i]) return false;
         return true;
 }
 
-bool decresing (string *s, int n) {
+bool decreasing (string *s, int n) {
         for (int i = 1; i < n; i++) if (s[i-1] < s[i]) return false;
         return true;
 }
@@ -32,12 +32,12 @@ int main(int argc, char const *argv[]) {
                         cin >> s[i];
                 }
 
-                if (incresing(s, n)) {
-                        cout<<"INCREASING"<<endl;
-                } else if (decresing(s, n)) {
-                        cout<<"DECREASING"<<endl;
+                if (increasing(s, n)) {
+                        cout << "INCREASING" << endl;
+                } else if (decreasing(s, n)) {
+                        cout << "DECREASING" << endl;
                 } else {
-                        cout<<"NEITHER"<<endl;
+                        cout << "NEITHER" << endl;
                 }
         }
 
