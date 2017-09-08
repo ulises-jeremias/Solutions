@@ -47,6 +47,18 @@ int main(int argc, char const *argv[]) {
                                 }
                         }
                 }
+
+                if (!is_stack && !is_queue && !is_priority_queue) {
+                        cout<<"impossible\n";
+                } else if ((is_stack && is_queue) || (is_stack && is_priority_queue) || (is_queue && is_priority_queue)) {
+                        cout<<"not sure\n";
+                } else if (is_stack) {
+                        cout<<"stack\n";
+                } else if (is_queue) {
+                        cout<<"queue\n";
+                } else {
+                        cout<<"priority queue\n";
+                }
         }
 
         return 0;
