@@ -6,60 +6,39 @@
  */
 
  #include <iostream>
- #include <string>
 
 using namespace std;
 
-bool is_less(string a, string b)
-{
-        return a < b;
+bool incresing (string *s, int n) {
+        for (int i = 1; i < n; i++) if (s[i-1] > s[i]) return false;
+        return true;
 }
 
-bool is_greater(string a, string b)
-{
-        return a > b;
+bool decresing (string *s, int n) {
+        for (int i = 1; i < n; i++) if (s[i-1] < s[i]) return false;
+        return true;
 }
 
 int main(int argc, char const *argv[]) {
-        ios_base::sync_with_stdio(0);
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
 
-        int i, j, k;
-        bool (*block)(string, string);
-        bool ordered;
-        string name, previous, output = "";
+        int tc, n;
+        string s[30];
 
-        while (cin >> k) {
-                output.clear();
-                previous.clear();
-                ordered = true;
-                block = NULL;
-
-                for (j = 0; j < k; j++) {
-                        cin >> name;
-
-                        if (!ordered) {
-                                continue;
-                        }
-
-                        if (previous == "") {
-                                previous = name;
-                                continue;
-                        }
-
-                        if (block == NULL) {
-                                block = name < previous ? &is_less : &is_greater;
-                        }
-
-                        ordered = block(name, previous);
+        tc = 1;
+        while (cin >> n) {
+                for (int i = 0; i < n; i++) {
+                        cin >> s[i];
                 }
 
-                if (!ordered) {
-                        output += "NEITHER";
+                if (incresing(s, n)) {
+                        cout<<"INCREASING"<<endl;
+                } else if (decresing(s, n)) {
+                        cout<<"DECREASING"<<endl;
                 } else {
-                        output += block == is_less ? "DECREASING" : "INCREASING";
+                        cout<<"NEITHER"<<endl;
                 }
-
-                cout << output << '\n';
         }
 
         return 0;
