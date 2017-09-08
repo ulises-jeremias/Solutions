@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
         while (cin >> minutes) {
                 total_time = right = 0;
                 memset(t, 0, sizeof t);
-		            memset(solved, 0, sizeof solved);
+                memset(solved, 0, sizeof solved);
 
                 while (minutes != -1) {
                         cin >> problem >> state;
