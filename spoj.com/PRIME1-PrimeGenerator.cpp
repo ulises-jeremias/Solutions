@@ -30,7 +30,8 @@ bool prime(int n)
 
 int main(int argc, char const *argv[])
 {
-        ios_base::sync_with_stdio(0);
+        ios_base::sync_with_stdio(false);
+        cie.tie(NULL);
 
         int i, j, from, to;
         string output = "";

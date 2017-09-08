@@ -14,6 +14,9 @@ static int max_cout = 2;
 
 int main(int argc, char const *argv[])
 {
+        ios_base::sync_with_stdio(false);
+        cie.tie(NULL);
+
         string input, pattern, output;
         int result, i;
 
