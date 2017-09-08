@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -14,21 +15,21 @@ int main(int argc, char const *argv[])
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
 
-        int t[27];
-        bool solved[27];
-        int minutes, i, right, total_time;
+        bool solved[30];
+        int minutes, i, right, total_time, t[30];
         char problem;
         int key;
         string state;
 
         while (cin >> minutes) {
                 total_time = right = 0;
-                key = problem - 'A';
-                *t = {0};
-                *solved = {false};
+                memset(t, 0, sizeof t);
+		            memset(solved, 0, sizeof solved);
 
                 while (minutes != -1) {
                         cin >> problem >> state;
+                        key = problem - 'A';
+
                         if (!solved[key]) {
                                 if (state[0] == 'r') {
                                         solved[key] = true;
