@@ -30,13 +30,13 @@ int main(int argc, char const *argv[])
                 while (minutes != -1) {
                         cin >> problem >> state;
                         if (!solved[key]) {
-                            if (state[0] == 'r') {
-                                    solved[key] = true;
-                                    right++;
-                                    total_time += minutes + t[key];
-                            } else {
-                                    t[key] += 20;
-                            }
+                                if (state[0] == 'r') {
+                                        solved[key] = true;
+                                        right++;
+                                        total_time += minutes + t[key];
+                                } else {
+                                        t[key] += 20;
+                                }
                         }
 
                         cin >> minutes;
