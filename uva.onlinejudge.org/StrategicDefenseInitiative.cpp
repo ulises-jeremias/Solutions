@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <cstdio>
 
 using namespace std;
 
@@ -13,12 +14,14 @@ int main(int argc, char const *argv[]) {
       ios_base::sync_with_stdio(false);
       cin.tie(NULL);
 
-      int n, i;
+      int tc, i;
+      char n[10];
 
-      while (cin >> n) {
-            for (i = 0; i < n; i++) {
-                  
-            }
+      cin >> tc;
+      getchar();
+      gets(n);
+      while (tc--) {
+
       }
 
       return 0;
