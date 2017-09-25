@@ -10,7 +10,7 @@
 using namespace std;
 
 int n;
-int input[15];
+int inputs[15];
 
 int lis()
 {
@@ -19,7 +19,7 @@ int lis()
         for (i = 0; i < n; i++) {
                 dp[i] = 1;
                 for (j = 0; j < i; j++) {
-                        if (input[j] < input[i] && dp[j] + 1 > dp[i]) {
+                        if (inputs[j] < inputs[i] && dp[j] + 1 > dp[i]) {
                                 dp[i] = dp[j] + 1;
                         }
                 }
@@ -38,7 +38,7 @@ int main(int argc, char const *argv[])
         int i;
         cin >> n;
         for (i = 0; i < n; i++) {
-                cin >> input[i];
+                cin >> inputs[i];
         }
         cout << lis() << endl;
         return 0;
