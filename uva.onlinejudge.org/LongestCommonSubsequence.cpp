@@ -17,6 +17,13 @@ int lcs()
 {
         int i, j, size1 = (int)s1.size(), size2 = (int)s2.size();
 
+        for (i = 0; i <= size1; i++) {
+                LCS[0][i] = 0;
+        }
+        for (i = 0; i <= size2; i++) {
+                LCS[i][0] = 0;
+        }
+
         for (i = 1; i <= size1; i++) {
                 for (j = 1; j <= size2; j++) {
                         if (s1[i-1] == s2[j-1]) {
@@ -33,15 +40,6 @@ int main(int argc, char const *argv[])
 {
         ios_base::sync_with_stdio(0);
         cin.tie(NULL);
-
-        int i, j, size1 = (int) s1.size(), size2 = (int) s2.size();
-
-        for (i = 0; i <= size1; i++) {
-                LCS[0][i] = 0;
-        }
-        for (i = 0; i <= size2; i++) {
-                LCS[i][0] = 0;
-        }
 
         while (getline(cin, s1)) {
                 getline(cin, s2);
