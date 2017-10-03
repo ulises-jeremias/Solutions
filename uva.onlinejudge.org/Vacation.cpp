@@ -20,6 +20,7 @@ int lcs()
         for (i = 0; i <= s1_size; i++) {
                 LCS[0][i] = 0;
         }
+        
         for (i = 0; i <= s2_size; i++) {
                 LCS[i][0] = 0;
         }
