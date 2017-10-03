@@ -15,11 +15,12 @@ string s1, s2;
 
 int lcs()
 {
-        int i, j, size1 = (int)s1.size(), size2 = (int)s2.size();
+        int i, j, size1 = (int) s1.size(), size2 = (int) s2.size();
 
         for (i = 0; i <= size1; i++) {
                 LCS[0][i] = 0;
         }
+
         for (i = 0; i <= size2; i++) {
                 LCS[i][0] = 0;
         }
@@ -33,6 +34,7 @@ int lcs()
                         }
                 }
         }
+        
         return LCS[size1][size2];
 }
 
