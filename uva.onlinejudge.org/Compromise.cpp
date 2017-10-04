@@ -16,7 +16,8 @@ string sequence1[105], sequence2[105];
 stack<string> p;
 
 
-void lcs () {
+void lcs ()
+{
         int i, j;
 
         for (i = 0; i <= n; i++) {
@@ -38,7 +39,8 @@ void lcs () {
         }
 }
 
-void print () {
+void print ()
+{
         int i = n, j = m;
         while (i >= 1 && j >= 1) {
                 if (sequence1[i] == sequence2[j]) {
@@ -65,7 +67,8 @@ void print () {
         cout << endl;
 }
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char const *argv[])
+{
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
 

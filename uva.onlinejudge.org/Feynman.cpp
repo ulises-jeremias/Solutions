@@ -11,7 +11,8 @@ using namespace std;
 
 int n, memo[105];
 
-void init () {
+void init ()
+{
         memo[1] = 1;
 
         for (int i = 2; i < 105; i++) {
@@ -19,7 +20,8 @@ void init () {
         }
 }
 
-int main () {
+int main ()
+{
         ios_base::sync_with_stdio(0);
         cin.tie(NULL);
 
