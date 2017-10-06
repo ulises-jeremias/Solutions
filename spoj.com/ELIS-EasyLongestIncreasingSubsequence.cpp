@@ -27,6 +27,7 @@ int lis()
                         max = dp[i];
                 }
         }
+
         return max;
 }
 
@@ -40,6 +41,8 @@ int main(int argc, char const *argv[])
         for (i = 0; i < n; i++) {
                 cin >> inputs[i];
         }
+
         cout << lis() << endl;
+
         return 0;
 }
