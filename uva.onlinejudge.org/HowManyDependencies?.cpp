@@ -8,27 +8,27 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <cstring>
 
 #define N 105
 
 using namespace std;
 
-int n;
+int n, deep;
 bool visited[N];
-vector<int> adj[N];
+vector<int> graph[N];
 
 int dfs(int v)
 {
         visited[v] = true;
-        int i, deep = 1;
+        int i, size = (int) graph[v].size();
 
-        for (i = 0; i < n; i++) {
-                if (adj[v][i] && !visited[i]) {
-                        deep += dfs(i);
+        for (i = 0; i < size; i++) {
+                if (!visited[graph[v][i]]) {
+                        deep++;
+                        dfs(graph[v][i]);
                 }
         }
-
-        return deep;
 }
 
 int main(int argc, char const *argv[])
@@ -39,33 +39,43 @@ int main(int argc, char const *argv[])
         cin.tie(NULL);
         #endif
 
-        int i, j, t, m;
+        int i, j, t, m, d[N + 5];
 
         while (cin >> n, n) {
-              for (i = 0; i < n; i++) {
-                      adj[i].clear();
-                      cin >> t;
-                      for (j = 0; j < t; j++) {
-                             cin >> m;
-                             adj[i][m] = true;
-                      }
-              }
+                for (i = 1; i <= n; i++) {
+                        graph[i].clear();
+                        d[i] = 0;
+                }
 
-              int max = -1, index = -1, deep[n + 5];
+                for (i = 1; i <= n; i++) {
+                        cin >> t;
+                        while (t--) {
+                                cin >> m;
+                                graph[i].push_back(m);
+                        }
+                }
 
-              for (i = 0; i < n; i++) {
-                    memset(visited, false, sizeof visited);
-                    deep[i] = dfs(i);
-              }
+                int maxDeep = -1, index = 1;
 
-              for (i = 0; i < n; i++) {
-                      if (deep[i] > max) {
-                          max = deep[i];
-                          index = i;
-                      }
-              }
+                for (i = 1; i <= n; i++) {
+                        memset(visited, false, sizeof visited);
+                        deep = 0;
+                        dfs(i);
+                        d[i] = deep;
+                }
 
-              cout << index << endl;
+                for (i = 1; i <= n; i++) {
+                        maxDeep = max(maxDeep, d[i]);
+                }
+
+                for (i = 1; i <= n; i++) {
+                        if (d[i] == maxDeep) {
+                                index = i;
+                                break;
+                        }
+                }
+
+                cout << index << endl;
         }
 
         return 0;
