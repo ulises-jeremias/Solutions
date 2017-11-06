@@ -20,11 +20,7 @@ typedef pair<int, int> ii;
 typedef pair<int, ii> edge;
 
 bool operator < (const edge a, const edge b){
-        if (a.first < b.first) {
-                return true;
-        }
-
-        return false;
+        return a.first < b.first;
 }
 
 struct DisjointSet
