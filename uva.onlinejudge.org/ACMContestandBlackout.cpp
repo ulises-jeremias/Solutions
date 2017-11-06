@@ -54,11 +54,20 @@ struct DisjointSet
         {
                 int xRoot = findSet(x), yRoot = findSet(y);
 
-                if (!isSameSet(xRoot, yRoot)) {
-                        rank[yRoot] += rank[xRoot];
-                        parents[xRoot] = yRoot;
-                        sets--;
+                if (isSameSet(xRoot, yRoot)) {
+                        return;
                 }
+
+                if (rank[xRoot] < rank[yRoot]) {
+                        parents[xRoot] = yRoot;
+                } else if (rank[xRoot] > rank[yRoot]) {
+                        parents[yRoot] = xRoot;
+                } else {
+                        parents[yRoot] = xRoot;
+                        rank[xRoot]++;
+                }
+
+                sets--;
         }
 };
 
@@ -78,7 +87,7 @@ struct Graph
                 edges.push_back(edge(w, ii(a, b)));
         }
 
-        vector <edge> kruskalMST()
+        vector <edge> kruskal()
         {
                 int i, w, from, to;
                 vector <edge> MST;
@@ -100,7 +109,7 @@ struct Graph
                 return MST;
         }
 
-        int kruskalMST_2(int O, int D)
+        int kruskal_2(int O, int D)
         {
                 int i, total = 0;
 
@@ -142,7 +151,7 @@ int main()
                         graph.addEdge(w, a, b);
                 }
 
-                MST = graph.kruskalMST();
+                MST = graph.kruskal();
                 s1 = 0, s2 = INF;
                 size = MST.size();
 
@@ -151,7 +160,7 @@ int main()
                 }
 
                 for (i = 0; i < size; i++) {
-                        s2 = min(s2, graph.kruskalMST_2(MST[i].second.first, MST[i].second.second));
+                        s2 = min(s2, graph.kruskal_2(MST[i].second.first, MST[i].second.second));
                 }
 
                 ans = s2 == INF ? s1 : s2;
