@@ -34,7 +34,7 @@ struct DisjointSet
                 sets = n;
                 parents = new int[n + 5];
                 rank = new int[n + 5];
-                for (i = 0; i <= n; i++) {
+                for (i = 0; i < n; i++) {
                         parents[i] = i;
                         rank[i] = 0;
                 }
@@ -151,7 +151,7 @@ int main()
 
                 for (i = 0; i < E; i++) {
                         cin >> a >> b >> w;
-                        graph.addEdge(w, a, b);
+                        graph.addEdge(w, --a, --b);
                 }
 
                 MST = graph.kruskal();
