@@ -12,14 +12,14 @@
 #include <algorithm>
 
 #define INF 1 << 30
-#define N 1000005
 
 using namespace std;
 
 typedef pair<int, int> ii;
 typedef pair<int, ii> edge;
 
-bool operator < (const edge a, const edge b){
+bool operator < (const edge a, const edge b)
+{
         return a.first < b.first;
 }
 
@@ -50,12 +50,12 @@ struct DisjointSet
                 return findSet(x) == findSet(y);
         }
 
-        void unionSet(int x, int y)
+        bool unionSet(int x, int y)
         {
                 int xRoot = findSet(x), yRoot = findSet(y);
 
                 if (isSameSet(xRoot, yRoot)) {
-                        return;
+                        return false;
                 }
 
                 if (rank[xRoot] < rank[yRoot]) {
@@ -68,6 +68,8 @@ struct DisjointSet
                 }
 
                 sets--;
+
+                return true;
         }
 };
 
@@ -100,16 +102,15 @@ struct Graph
                         from = edges[i].second.first;
                         to = edges[i].second.second;
 
-                        if (!ds.isSameSet(from, to)) {
+                        if (ds.unionSet(from, to)) {
                                 MST.push_back(edge(w, ii(from, to)));
-                                ds.unionSet(from, to);
                         }
                 }
 
                 return MST;
         }
 
-        int kruskal_2(int O, int D)
+        int kruskal_2(int u, int v)
         {
                 int i, total = 0;
 
@@ -118,10 +119,12 @@ struct Graph
                 for (i = 0; i < edges.size(); i++) {
                         int from = edges[i].second.first;
                         int to = edges[i].second.second;
-                        if (from == O && to == D)
+
+                        if (from == u && to == v) {
                                 continue;
-                        if (!ds.isSameSet(from, to)) {
-                                ds.unionSet(from, to);
+                        }
+
+                        if (ds.unionSet(from, to)) {
                                 total += edges[i].first;
                         }
                 }
