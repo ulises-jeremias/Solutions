@@ -15,8 +15,6 @@
 
 using namespace std;
 
-typedef pair<int, int> ii;
-using namespace std;
 typedef long long ll;
 typedef pair<int, int> ii;
 
@@ -30,6 +28,7 @@ struct point_i {
         point_i (int _x, int _y) : x(_x), y(_y) {
         };
 };
+
 struct point {
         double x, y;
 
@@ -40,6 +39,7 @@ struct point {
         point (double _x, double _y) : x(_x), y(_y) {
         };
 };
+
 struct line {
         double a, b, c;
 
