@@ -122,11 +122,11 @@ bool is_inside(int idx)
 }
 
 int main(int argc, char const *argv[]) {
-        /*#ifndef ONLINE_JUDGE
-         #define ONLINE_JUDGE
-           ios_base::sync_with_stdio(false);
-           cin.tie(NULL);
-         #endif*/
+        #ifndef ONLINE_JUDGE
+        #define ONLINE_JUDGE
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        #endif
 
         int i;
 
