@@ -52,20 +52,20 @@ int main(int argc, char const *argv[]) {
 
         int i;
 
-        while (cin >> n, n) {
+        while (scanf("%d", &n), n) {
                 for (i = 1; i <= n; i++) {
                         graph[i].clear();
                 }
 
-                while (cin >> u, u) {
-                        while (cin >> v, v) {
+                while (scanf("%d", &u), u) {
+                        while (scanf("%d", &v), v) {
                                 graph[u].push_back(v);
                         }
                 }
 
-                cin >> k;
+                scanf("%d", &k);
                 while (k--) {
-                        cin >> u;
+                        scanf("%d", &u);
                         bfs();
 
                         int count = 0;
@@ -73,15 +73,15 @@ int main(int argc, char const *argv[]) {
                                 count += (int) !visited[i];
                         }
 
-                        cout << count;
+                        printf("%d", count);
 
                         for (i = 1; i <= n; i++) {
                                 if (!visited[i]) {
-                                        cout << " " << i;
+                                        printf(" %d", i);
                                 }
                         }
 
-                        cout << endl;
+                        printf("\n");
                 }
         }
 
