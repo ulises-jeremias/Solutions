@@ -9,10 +9,9 @@
 #include <utility>
 #include <algorithm>
 #include <cmath>
-#include <cstdio>
 
 #define EPS 1e-9
-#define INF 1 << 30
+#define INF 1 <<  30
 
 using namespace std;
 
@@ -32,106 +31,35 @@ struct point
         };
 };
 
-int n;
-char op;
-point lower_left, upper_right, p, q;
-point rectangles[2][5];
+point p1, p2, p3, p4, p5, p6;
 
-point to_vec(const point &a, const point &b)
-{
-        return point(a.x - b.x, a.y - b.y);
-}
-
-double cross(point a, point b)
-{
-        return (double) ((a.x * b.y) - (b.x * a.y));
-}
-
-double to_vec_cross(point a, point b, point c)
-{
-        return cross(to_vec(a, c), to_vec(b, c));
-}
-
-bool ccw(point a, point b, point p)
-{
-        return to_vec_cross(a, b, p) > 0.0;
-}
-
-bool is_inside(int idx)
-{
-        for (int i = 0; i < 4; i++) {
-                if (!ccw(rectangles[0][i], rectangles[0][i + 1], rectangles[1][idx])) {
-                        return false;
-                }
-        }
-
-        return true;
-}
-
-int main(int argc, char const *argv[]) {
+int main () {
         #ifndef ONLINE_JUDGE
         #define ONLINE_JUDGE
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
         #endif
 
-        int TC, i;
-        string line;
-        bool overlap;
+        int TC, i, j;
 
-        scanf("%d", &TC);
-        getchar();
-        getline(cin, line);
-
+        cin >> TC;
         while (TC--) {
-                for (i = 0; i < 2; ++i)
-                {
-                        scanf("%d %d", &lower_left.x, &lower_left.y);
-                        scanf("%d %d", &upper_right.x, &upper_right.y);
+                cin >> p1.x >> p1.y >> p2.x >> p2.y;
+                cin >> p3.x >> p3.y >> p4.x >> p4.y;
 
-                        rectangles[i][0].x = lower_left.x;
-                        rectangles[i][0].y = upper_right.y;
+                p5.x = max(p1.x, p3.x);
+                p5.y = max(p1.y, p3.y);
+                p6.x = min(p2.x, p4.x);
+                p6.y = min(p2.y, p4.y);
 
-                        rectangles[i][1].x = lower_left.x;
-                        rectangles[i][1].y = lower_left.y;
-
-                        rectangles[i][2].x = upper_right.x;
-                        rectangles[i][2].y = lower_left.y;
-
-                        rectangles[i][3].x = upper_right.x;
-                        rectangles[i][3].y = upper_right.y;
-
-                        rectangles[i][4].x = lower_left.x;
-                        rectangles[i][4].y = upper_right.y;
-                }
-
-                overlap = false;
-                for (i = 0; i < 4; ++i)
-                {
-                        if (is_inside(i)) {
-                                overlap = true;
-                                break;
-                        }
-                }
-
-                if (overlap) {
-                        point w;
-                        p = rectangles[1][i];
-                        if (i == 0) {
-                                w = rectangles[0][2];
-                                printf("%d %d %d %d\n", p.x, w.y, w.x, p.y);
-                        } else if (i == 1) {
-                                w = rectangles[0][3];
-                                printf("%d %d %d %d\n", p.x, p.y, w.x, w.y);
-                        } else if (i == 2) {
-                                w = rectangles[0][0];
-                                printf("%d %d %d %d\n", w.x, p.y, p.x, w.y);
-                        } else {
-                                w = rectangles[0][1];
-                                printf("%d %d %d %d\n", w.x, w.y, p.x, p.y);
-                        }
-                } else {
+                if (p5.x >= p6.x || p5.y >= p6.y) {
                         cout << "No Overlap" << endl;
+                } else {
+                        cout << p5.x << " " << p5.y << " " << p6.x << " " << p6.y << endl;
+                }
+
+                if (TC) {
+                        cout << endl;
                 }
         }
 
